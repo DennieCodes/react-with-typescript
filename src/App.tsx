@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import ShoppingList from './components/ShoppingList';
+import ShoppingListForm from './components/ShoppingListForm';
 import Item from './models/item';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 	return (
 		<div>
 			<ShoppingList items={items} />
+			<ShoppingListForm />
 		</div>
 	);
 }

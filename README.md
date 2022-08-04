@@ -80,5 +80,13 @@ export default interface Item {
 }
 
 import Item from './models/item';
+```
 
+## Note: handling events with React/Typescript
+
+```text
+
+function handleSubmit(e: React.FormEvent) {
+		e.preventDefault();
+}
 ```
