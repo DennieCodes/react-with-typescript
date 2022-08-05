@@ -1,26 +1,34 @@
-import { useRef } from 'react';
+import useInputState from '../hooks/useInputState';
 
 interface ShoppingListFormProps {
 	onAddItem: (item: string, quantity: number) => void;
 }
 
 function ShoppingListForm({ onAddItem }: ShoppingListFormProps): JSX.Element {
-	const textInputRef = useRef<HTMLInputElement>(null);
-	const quantityInputRef = useRef<HTMLInputElement>(null);
+	const [text, handleTextChange, resetText] = useInputState('');
+	const [quantity, handleQuantityChange, resetQuantity] = useInputState(0);
 
 	function handleSubmit(e: React.FormEvent) {
 		e.preventDefault();
-		const newProduct = textInputRef.current!.value;
-		const quantity = parseInt(quantityInputRef.current!.value);
-		onAddItem(newProduct, quantity);
-		textInputRef.current!.value = '';
-		quantityInputRef.current!.value = '1';
+		onAddItem(text, parseInt(quantity || 0));
+		resetText();
+		resetQuantity();
 	}
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<input type="text" placeholder="Product Name" ref={textInputRef} />
-			<input type="number" min={0} ref={quantityInputRef} />
+			<input
+				value={text}
+				type="text"
+				placeholder="Product Name"
+				onChange={handleTextChange}
+			/>
+			<input
+				value={quantity}
+				type="number"
+				min={0}
+				onChange={handleQuantityChange}
+			/>
 			<button type="submit">Add Item</button>
 		</form>
 	);

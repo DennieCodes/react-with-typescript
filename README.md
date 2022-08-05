@@ -134,3 +134,48 @@ import { v4 as uuidv4 } from 'uuid';
 
 const NewId = uuidv4();
 ```
+
+## Note: Added addition form control and associated controls set with Type
+
+```text
+const AddItem = (product: string, quantity: number) => {
+  setitems([...items, { id: uuidv4(), product, quantity }]);
+};
+
+interface ShoppingListFormProps {
+	onAddItem: (item: string, quantity: number) => void;
+}
+
+function ShoppingListForm({ onAddItem }: ShoppingListFormProps): JSX.Element {
+
+function handleSubmit(e: React.FormEvent) {
+  ...
+  const quantity = parseInt(quantityInputRef.current!.value);
+  onAddItem(newProduct, quantity);
+
+```
+
+## NOTE: Replaced ref with useState for controlled input components, added custome useInputState hook
+
+```text
+import { useState } from 'react';
+
+export default function useInputState(initialValue: any) {
+	const [state, setState] = useState(initialValue);
+
+	const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+		setState(e.currentTarget.value);
+	};
+
+	const reset = () => {
+		setState('');
+	};
+
+	return [state, handleChange, reset];
+}
+
+const [text, handleTextChange, resetText] = useInputState('');
+const [quantity, handleQuantityChange, resetQuantity] = useInputState(0);
+
+<input value={text} onChange={handleTextChange} ... />
+```
