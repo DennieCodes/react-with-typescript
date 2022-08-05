@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import ShoppingList from './components/ShoppingList';
 import ShoppingListForm from './components/ShoppingListForm';
@@ -8,7 +9,7 @@ function App() {
 	const [items, setitems] = useState<Item[]>([]);
 
 	const AddItem = (product: string) => {
-		console.log(product);
+		setitems([...items, { id: uuidv4(), product: product, quantity: 1 }]);
 	};
 
 	// const items = [
