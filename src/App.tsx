@@ -8,8 +8,8 @@ import Item from './models/item';
 function App() {
 	const [items, setitems] = useState<Item[]>([]);
 
-	const AddItem = (product: string) => {
-		setitems([...items, { id: uuidv4(), product: product, quantity: 1 }]);
+	const AddItem = (product: string, quantity: number) => {
+		setitems([...items, { id: uuidv4(), product, quantity }]);
 	};
 
 	// const items = [

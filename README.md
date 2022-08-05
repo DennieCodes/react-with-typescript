@@ -123,3 +123,14 @@ function ShoppingListForm({ onAddItem }: ShoppingListFormProps): JSX.Element {
   ...
 }
 ```
+
+## Note: using uuid with Typescript/React
+
+```text
+npm install uuid
+npm install --save-dev @types/uuid
+
+import { v4 as uuidv4 } from 'uuid';
+
+const NewId = uuidv4();
+```
