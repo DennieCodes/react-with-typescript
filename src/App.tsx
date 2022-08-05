@@ -7,6 +7,10 @@ import Item from './models/item';
 function App() {
 	const [items, setitems] = useState<Item[]>([]);
 
+	const AddItem = (product: string) => {
+		console.log(product);
+	};
+
 	// const items = [
 	// 	{ id: 1, product: 'Pizza sauce', quantity: 1 },
 	// 	{ id: 2, product: 'Mozzarella', quantity: 2 },
@@ -15,7 +19,7 @@ function App() {
 	return (
 		<div>
 			<ShoppingList items={items} />
-			<ShoppingListForm />
+			<ShoppingListForm onAddItem={AddItem} />
 		</div>
 	);
 }

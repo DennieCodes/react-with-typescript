@@ -4,9 +4,9 @@ Practice project for implementing Typescript into React/Next projects
 
 ## Note: Simple declaraction of functional component returning JSX element
 
+```text
 function Greeter(): JSX.Element {
 
-```text
 Alternative: Older method with some issues outlined in documentation for returning a react functional component
 const Greeter: React.FC = () => {
   return <h1>Hello!</h1>;
@@ -66,7 +66,6 @@ return (
 ## Note: useState with Typescript
 
 ```text
-
 interface Item {
 	id: number;
 	product: string;
@@ -85,8 +84,42 @@ import Item from './models/item';
 ## Note: handling events with React/Typescript
 
 ```text
-
 function handleSubmit(e: React.FormEvent) {
 		e.preventDefault();
+}
+```
+
+## Note: useRef for referencing values in input
+
+```text
+const inputRef = useRef<HTMLInputElement>(null);
+
+function handleSubmit(e: React.FormEvent) {
+  e.preventDefault();
+  const newProduct = inputRef.current!.value;
+  ...
+}
+
+<form onSubmit={handleSubmit}>
+	<input type="text" placeholder="Product Name" ref={inputRef} />
+  <button type="submit">Add Item</button>
+</form>
+```
+
+## Note: passing functions to child components
+
+```text
+const AddItem = (product: string) => {
+  console.log(product);
+};
+
+<ShoppingListForm onAddItem={AddItem} />
+
+interface ShoppingListFormProps {
+	onAddItem: (item: string) => void;
+}
+
+function ShoppingListForm({ onAddItem }: ShoppingListFormProps): JSX.Element {
+  ...
 }
 ```
