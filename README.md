@@ -2,7 +2,7 @@
 
 Practice project for implementing Typescript into React/Next projects
 
-## Note: Simple declaraction of functional component returning JSX element
+## Note: Simple declaration of functional component returning JSX element
 
 ```text
 function Greeter(): JSX.Element {
@@ -155,7 +155,7 @@ function handleSubmit(e: React.FormEvent) {
 
 ```
 
-## NOTE: Replaced ref with useState for controlled input components, added custome useInputState hook
+## NOTE: Replaced ref with useState for controlled input components, added custom useInputState hook
 
 ```text
 import { useState } from 'react';
