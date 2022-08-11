@@ -1,3 +1,5 @@
+// import { useContext } from 'react';
+// import { ShoppingListContext } from '../context/shoppingList.context';
 import Item from '../models/item';
 
 interface ShoppingListProps {
@@ -5,6 +7,8 @@ interface ShoppingListProps {
 }
 
 export default function ShoppingList(props: ShoppingListProps): JSX.Element {
+	// const shoppingContext = useContext(ShoppingListContext);
+
 	return (
 		<div>
 			<h1>Shopping List</h1>
